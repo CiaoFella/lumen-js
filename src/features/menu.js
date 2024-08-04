@@ -1,0 +1,77 @@
+window.addEventListener("DOMContentLoaded", (event) => {
+    function initMenu() {
+      const fullClipPath = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)";
+      const topClipPath = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
+  
+      const navigation = document.querySelector("[data-menu=wrapper]");
+      const menuTrigger = navigation.querySelector("[data-menu=trigger]");
+      const flyout = navigation.querySelector("[data-menu=flyout]");
+      const bg = flyout.querySelector("[data-menu=bg]");
+      const items = flyout.querySelectorAll("[data-menu=item]");
+      const nums = flyout.querySelectorAll("[data-menu=num]");
+      const divider = flyout.querySelector("[data-menu=divider]");
+      const generalElements = flyout.querySelectorAll("[data-menu=element]");
+      const ctaText = flyout.querySelector("[data-menu=split]");
+      let ctaSplit = new SplitType(ctaText, {
+        types: "lines",
+        lineClass: "split-line",
+      });
+  
+      const menuTl = gsap.timeline({ paused: true });
+      menuTl
+        .to(flyout, { display: "flex", duration: 0 })
+        .from(bg, { height: "0vh", duration: 1, ease: "power4.inOut" }, 0)
+        .to(
+          menuTrigger,
+          { rotate: -45, duration: 0.5, ease: "power2.inOut" },
+          "<"
+        )
+        .from(
+          items,
+          {
+            yPercent: 110,
+            duration: 1.5,
+            ease: "expo.out",
+            stagger: 0.1,
+          },
+          ">-10%"
+        )
+        .fromTo(
+          nums,
+          { clipPath: topClipPath, y: 50 },
+          {
+            clipPath: fullClipPath,
+            y: 0,
+            ease: "expo.out",
+            duration: 1.5,
+            stagger: 0.1,
+          },
+          "<-0.1"
+        )
+        .call(() => navigation.classList.toggle("is-active"), [], "<")
+        .from(divider, { width: 0, duration: 2, ease: "power4.inOut" }, "<+0.5")
+        .fromTo(
+          [ctaSplit.lines, generalElements],
+          { clipPath: topClipPath, y: 50 },
+          {
+            clipPath: fullClipPath,
+            y: 0,
+            duration: 1,
+            ease: "expo.out",
+            stagger: 0.05,
+          },
+          "<+0.25"
+        );
+  
+      menuTrigger.addEventListener("click", () => {
+        menuTrigger.classList.toggle("is-active");
+        if (menuTrigger.classList.contains("is-active")) {
+          menuTl.timeScale(1).play();
+        } else {
+          menuTl.timeScale(2).reverse();
+        }
+      });
+    }
+    initMenu();
+  });
+  
