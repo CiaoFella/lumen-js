@@ -1,4 +1,5 @@
 import './features/barHover.js';
+import './features/videoPlayer.js';
 import './features/textScroll.js';
 import './features/cycleElements.js'
 import './features/menu.js';
