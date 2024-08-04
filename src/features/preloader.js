@@ -1,27 +1,27 @@
 function pageLoader() {
-    const fullClipPath = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
-    const rightSideClipPath = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)";
-  
-    // Get loader elements
-    const loader = document.querySelector("[data-loader]");
+  const fullClipPath = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+  const rightSideClipPath = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)";
+
+  // Get loader elements
+  const loader = document.querySelector("[data-loader]");
+
+  if (loader) {
     const progressBar = loader.querySelector("[data-loader-bar]");
     const percentageText = loader.querySelector("[data-loader-percentage]");
     const logo = loader.querySelector("[data-loader-logo]");
     const bg = loader.querySelector("[data-loader-bg]");
-  
-    // Set initial styles
+
+    let loaderDuration = loader.dataset.loaderDuration;
+
     gsap.set(loader, {
       opacity: 1,
       display: "block",
     });
-  
+
     gsap.set(progressBar, {
       width: "0%",
     });
-  
-    // Determine loader duration based on session storage
-    const loaderDuration = sessionStorage.getItem("pageLoaded") ? 0.5 : 4;
-  
+
     // Animate loader
     const tl = gsap.timeline({
       onComplete: () => {
@@ -29,7 +29,7 @@ function pageLoader() {
         gsap.set(loader, { display: "none" });
       },
     });
-  
+
     tl.to(progressBar, {
       width: "100%",
       duration: loaderDuration, // Use the dynamic duration
@@ -41,7 +41,6 @@ function pageLoader() {
         ease: "power2.inOut",
         onUpdate: () => {
           const progress = Math.round(tl.progress() * 100);
-          console.log(`Progress: ${progress}%`);
           percentageText.textContent = `${progress}%`;
         },
         onComplete: () => {
@@ -54,7 +53,11 @@ function pageLoader() {
             .fromTo(
               progressBar,
               { clipPath: fullClipPath },
-              { clipPath: rightSideClipPath, duration: 1, ease: "power2.inOut" }, // This duration remains the same
+              {
+                clipPath: rightSideClipPath,
+                duration: 1,
+                ease: "power2.inOut",
+              }, // This duration remains the same
               "<"
             )
             .to(
@@ -72,6 +75,6 @@ function pageLoader() {
       0
     );
   }
-  
-  pageLoader();
-  
+}
+
+pageLoader();
