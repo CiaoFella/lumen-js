@@ -7,7 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
       const soundButton = wrapper.querySelector("[data-video=sound-button]");
   
       video.addEventListener("click", () => {
-        playButton.click();
+        if (playButton) {
+          playButton.click();
+        } else {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        }
       });
   
       if (playButton) {
@@ -18,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             video.pause();
           }
         });
+      } else {
       }
   
       if (soundButton) {
