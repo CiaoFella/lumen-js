@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "cd docs && npm install",
     "build:docs": "cd docs && npm run build",
     "build": "npm run build:docs && vite build"
   },
