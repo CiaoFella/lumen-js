@@ -4,13 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vite build"
+    "build:docs": "cd docs && npm run build",
+    "build": "npm run build:docs && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "vite": "^5.3.5"
+  },
+  "dependencies": {
+    "@mintlify/cli": "^4.0.195",
+    "sharp": "^0.33.4"
   }
 }
