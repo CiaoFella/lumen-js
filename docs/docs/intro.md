@@ -2,46 +2,45 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Feature Documentation
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Welcome to the documentation for our custom features. This guide will help you understand and implement the various features available in your project.
+
+## Table of Contents
+
+1. [Introduction](#introduction)
+2. [Getting Started](#getting-started)
+3. [Feature Overview](#feature-overview)
+4. [Implementation](#implementation)
+5. [Customization](#customization)
+
+## Introduction
+
+This documentation provides an overview of the custom features available for your project. Each feature is designed to enhance your website's functionality and user experience.
 
 ## Getting Started
 
-Get started by **creating a new site**.
+To use these features, ensure that the final JavaScript file is properly referenced in your Webflow site settings. This file contains all the necessary code to enable the features described in this documentation.
 
-[Introduction](./intro.md)
+## Feature Overview
 
-### What you'll need
+We offer a variety of features, each with its own dedicated documentation page. These pages provide detailed information about:
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- Feature description
+- Usage instructions
+- Important considerations
+- Specific data attributes used
 
-## Generate a new site
+## Implementation
 
-Generate a new Docusaurus site using the **classic template**.
+To implement a feature:
 
-The classic template will automatically be added to your project after you run the command:
+1. Navigate to the specific feature's documentation page.
+2. Review the usage instructions and important notes.
+3. Implement the feature using the provided data attributes.
 
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+Example:
+```html
+<div data-feature-name="example-feature">
+  <!-- Your content here -->
+</div>

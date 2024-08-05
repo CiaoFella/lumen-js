@@ -29,9 +29,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
       const headlineDelay = headline.dataset.delay || 0;
       const headlineDuration = headline.dataset.duration || 2;
+
+      let headlineY = 150
+      let mm = gsap.matchMedia()
+
+      mm.add('(max-width: 991px)', () => {
+        headlineY = 75
+      })
+
       tl.fromTo(
         headlineSplit.lines,
-        { clipPath: topClipPath, y: 150 },
+        { clipPath: topClipPath, y: headlineY },
         {
           clipPath: fullClipPath,
           y: 0,

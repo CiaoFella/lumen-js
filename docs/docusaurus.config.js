@@ -21,6 +21,20 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/intro', // Target path
+            from: '/', // This will redirect from /docs/ to /docs/intro
+          },
+        ],
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -29,7 +43,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/CiaoFella/lumen-js/edit/main/',
-          routeBasePath: '/', // This means docs will be served at /docs/
+          routeBasePath: '/',
           path: './docs',
           include: ['**/*.md', '**/*.mdx'],
         },
@@ -50,7 +64,7 @@ const config = {
         title: 'Lumen Docs',
         logo: {
           alt: 'Lumen Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo_square.svg',
         },
         items: [
           {
@@ -59,30 +73,6 @@ const config = {
             position: 'right',
           },
         ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Introduction',
-                to: '/docs/intro', // Ensure this path matches your documentation structure
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/CiaoFella/lumen-js',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Julian Fella. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

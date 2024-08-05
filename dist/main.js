@@ -1,4 +1,4 @@
-const S = "M 0 100 V 0 Q 500 75 1000 0 V 0 H 0 z", v = "M 0 100 V 100 Q 500 100 1000 100 V 0 H 0 z", T = "M 0 100 V 100 Q 500 25 1000 100 V 100 z", w = "M 0 100 V 0 Q 500 0 1000 0 V 100 z", E = "M 0 100 V 100 Q 500 25 1000 100 V 0 H 0 z", b = "M 0 100 V 0 Q 500 0 1000 0 V 0 H 0 z", C = "M 0 100 V 0 Q 500 75 1000 0 V 100 z", q = "M 0 100 V 100 Q 500 100 1000 100 V 100 z";
+const S = "M 0 100 V 0 Q 500 75 1000 0 V 0 H 0 z", v = "M 0 100 V 100 Q 500 100 1000 100 V 0 H 0 z", w = "M 0 100 V 100 Q 500 25 1000 100 V 100 z", T = "M 0 100 V 0 Q 500 0 1000 0 V 100 z", E = "M 0 100 V 100 Q 500 25 1000 100 V 0 H 0 z", b = "M 0 100 V 0 Q 500 0 1000 0 V 0 H 0 z", C = "M 0 100 V 0 Q 500 75 1000 0 V 100 z", x = "M 0 100 V 100 Q 500 100 1000 100 V 100 z";
 window.addEventListener("DOMContentLoaded", (m) => {
   document.querySelectorAll(
     "[data-animate-hover=bg-section]"
@@ -6,19 +6,19 @@ window.addEventListener("DOMContentLoaded", (m) => {
     t.querySelectorAll("[data-animate-hover=bg]").forEach((e) => {
       const n = e.querySelector("[data-animate=bg-filler-path]");
       e.addEventListener("mouseenter", (l) => {
-        const c = a(l, e), u = i(c);
-        s(n, u.start, u.end);
+        const d = a(l, e), c = i(d);
+        s(n, c.start, c.end);
       }), e.addEventListener("mouseleave", (l) => {
-        const c = a(l, e), u = r(c);
-        s(n, u.start, u.end);
+        const d = a(l, e), c = r(d);
+        s(n, c.start, c.end);
       });
     });
   });
   function a(t, o) {
-    const e = o.getBoundingClientRect(), n = t.clientX, l = t.clientY, c = Math.abs(e.top - l), u = Math.abs(e.bottom - l), g = Math.abs(e.left - n), p = Math.abs(e.right - n);
+    const e = o.getBoundingClientRect(), n = t.clientX, l = t.clientY, d = Math.abs(e.top - l), c = Math.abs(e.bottom - l), g = Math.abs(e.left - n), p = Math.abs(e.right - n);
     var y = Math.min(
+      d,
       c,
-      u,
       g,
       p
     );
@@ -27,19 +27,19 @@ window.addEventListener("DOMContentLoaded", (m) => {
         return "left";
       case p:
         return "right";
-      case c:
+      case d:
         return "top";
-      case u:
+      case c:
         return "bottom";
     }
   }
   function i(t, o) {
     let e, n;
-    return t === "top" ? (e = S, n = v) : t === "bottom" ? (e = T, n = w) : (e = S, n = v), { start: e, end: n };
+    return t === "top" ? (e = S, n = v) : t === "bottom" ? (e = w, n = T) : (e = S, n = v), { start: e, end: n };
   }
   function r(t, o) {
     let e, n;
-    return t === "top" ? (e = E, n = b) : t === "bottom" ? (e = C, n = q) : (e = E, n = b), { start: e, end: n };
+    return t === "top" ? (e = E, n = b) : t === "bottom" ? (e = C, n = x) : (e = E, n = b), { start: e, end: n };
   }
   function s(t, o, e) {
     if (o && e)
@@ -55,8 +55,8 @@ window.addEventListener("DOMContentLoaded", (m) => {
   }
 });
 document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll("[data-video=video-wrapper]").forEach((d) => {
-    const a = d.querySelector("[data-video=video]"), i = d.querySelector("[data-video=play-button]"), r = d.querySelector("[data-video=sound-button]");
+  document.querySelectorAll("[data-video=video-wrapper]").forEach((u) => {
+    const a = u.querySelector("[data-video=video]"), i = u.querySelector("[data-video=play-button]"), r = u.querySelector("[data-video=sound-button]");
     a.addEventListener("click", () => {
       i ? i.click() : a.paused ? a.play() : a.pause();
     }), i && i.addEventListener("click", () => {
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 window.addEventListener("DOMContentLoaded", (m) => {
   gsap.registerPlugin(ScrollTrigger);
-  const d = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)", a = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
+  const u = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)", a = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
   document.querySelectorAll(
     "[data-animate-scroll=text-section]"
   ).forEach((s) => {
@@ -86,14 +86,17 @@ window.addEventListener("DOMContentLoaded", (m) => {
         types: "lines",
         lineClass: "split-line"
         // !important .line is already taken
-      }), l = t.dataset.delay || 0, c = t.dataset.duration || 2;
-      e.fromTo(
+      }), l = t.dataset.delay || 0, d = t.dataset.duration || 2;
+      let c = 150;
+      gsap.matchMedia().add("(max-width: 991px)", () => {
+        c = 75;
+      }), e.fromTo(
         n.lines,
-        { clipPath: a, y: 150 },
+        { clipPath: a, y: c },
         {
-          clipPath: d,
+          clipPath: u,
           y: 0,
-          duration: c,
+          duration: d,
           delay: l,
           stagger: 0.25,
           ease: "expo.out"
@@ -102,18 +105,18 @@ window.addEventListener("DOMContentLoaded", (m) => {
       );
     }
     o && o.length > 0 && o.forEach((n) => {
-      const l = n.dataset.delay || 0, c = n.dataset.duration || 2, u = new SplitType(n, {
+      const l = n.dataset.delay || 0, d = n.dataset.duration || 2, c = new SplitType(n, {
         types: "lines",
         lineClass: "split-line"
         // !important .line is already taken
       });
       e.fromTo(
-        u.lines,
+        c.lines,
         { clipPath: a, y: 150 },
         {
-          clipPath: d,
+          clipPath: u,
           y: 0,
-          duration: c,
+          duration: d,
           delay: l,
           stagger: 0.15,
           ease: "expo.out"
@@ -127,10 +130,10 @@ window.addEventListener("DOMContentLoaded", (m) => {
       const e = o.className, n = document.createDocumentFragment();
       o.childNodes.forEach((l) => {
         if (l.nodeType === Node.TEXT_NODE) {
-          const c = l.textContent.split(/\s+/);
-          c.forEach((u, g) => {
+          const d = l.textContent.split(/\s+/);
+          d.forEach((c, g) => {
             const p = document.createElement("span");
-            p.textContent = u, e && (p.className = e), n.appendChild(p), g < c.length - 1 && n.appendChild(document.createTextNode(" "));
+            p.textContent = c, e && (p.className = e), n.appendChild(p), g < d.length - 1 && n.appendChild(document.createTextNode(" "));
           });
         } else l.nodeType === Node.ELEMENT_NODE && l.tagName === "BR" && n.appendChild(l.cloneNode());
       }), o.replaceWith(n);
@@ -161,9 +164,9 @@ window.addEventListener("DOMContentLoaded", (m) => {
   });
 });
 window.addEventListener("DOMContentLoaded", (m) => {
-  function d() {
-    const a = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)", i = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)", r = document.querySelector("[data-menu=wrapper]"), s = r.querySelector("[data-menu=trigger]"), t = r.querySelector("[data-menu=flyout]"), o = t.querySelector("[data-menu=bg]"), e = t.querySelectorAll("[data-menu=item]"), n = t.querySelectorAll("[data-menu=num]"), l = t.querySelector("[data-menu=divider]"), c = t.querySelectorAll("[data-menu=element]"), u = t.querySelector("[data-menu=split]");
-    let g = new SplitType(u, {
+  function u() {
+    const a = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)", i = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)", r = document.querySelector("[data-menu=wrapper]"), s = r.querySelector("[data-menu=trigger]"), t = r.querySelector("[data-menu=flyout]"), o = t.querySelector("[data-menu=bg]"), e = t.querySelectorAll("[data-menu=item]"), n = t.querySelectorAll("[data-menu=num]"), l = t.querySelector("[data-menu=divider]"), d = t.querySelectorAll("[data-menu=element]"), c = t.querySelector("[data-menu=split]");
+    let g = new SplitType(c, {
       types: "lines",
       lineClass: "split-line"
     });
@@ -193,7 +196,7 @@ window.addEventListener("DOMContentLoaded", (m) => {
       },
       "<-0.1"
     ).call(() => r.classList.toggle("is-active"), [], "<").from(l, { width: 0, duration: 2, ease: "power4.inOut" }, "<+0.5").fromTo(
-      [g.lines, c],
+      [g.lines, d],
       { clipPath: i, y: 50 },
       {
         clipPath: a,
@@ -207,10 +210,10 @@ window.addEventListener("DOMContentLoaded", (m) => {
       s.classList.toggle("is-active"), s.classList.contains("is-active") ? p.timeScale(1).play() : p.timeScale(2).reverse();
     });
   }
-  d();
+  u();
 });
 window.addEventListener("DOMContentLoaded", (m) => {
-  function d(t, o) {
+  function u(t, o) {
     const e = typeof t;
     return typeof o != "string" || o.trim() === "" ? t : o === "true" && e === "boolean" ? !0 : o === "false" && e === "boolean" ? !1 : isNaN(o) && e === "string" ? o : !isNaN(o) && e === "number" ? +o : t;
   }
@@ -226,16 +229,16 @@ window.addEventListener("DOMContentLoaded", (m) => {
       }
       a.push(p);
     }
-    const o = d(0.4, r.getAttribute("speed")), e = d("power1.out", r.getAttribute("ease")), n = d(
+    const o = u(0.4, r.getAttribute("speed")), e = u("power1.out", r.getAttribute("ease")), n = u(
       50,
       r.getAttribute("percent-from-top")
-    ), l = d(0, r.getAttribute("min-width"));
+    ), l = u(0, r.getAttribute("min-width"));
     gsap.registerPlugin(ScrollTrigger);
-    const c = document.querySelectorAll("[animate-body-to]");
-    c.forEach((g, p) => {
+    const d = document.querySelectorAll("[animate-body-to]");
+    d.forEach((g, p) => {
       const y = +g.getAttribute("animate-body-to");
       let h = `clamp(bottom ${n}%)`;
-      p === c.length - 1 && (h = `bottom ${n}%`), gsap.matchMedia().add(`(min-width: ${l}px)`, () => {
+      p === d.length - 1 && (h = `bottom ${n}%`), gsap.matchMedia().add(`(min-width: ${l}px)`, () => {
         gsap.timeline({
           scrollTrigger: {
             trigger: g,
@@ -250,11 +253,11 @@ window.addEventListener("DOMContentLoaded", (m) => {
         });
       });
     });
-    const u = document.querySelectorAll("[set-body-to]");
-    u.forEach((g, p) => {
+    const c = document.querySelectorAll("[set-body-to]");
+    c.forEach((g, p) => {
       const y = +g.getAttribute("set-body-to");
       let h = `clamp(bottom ${n}%)`;
-      p === u.length - 1 && (h = `bottom ${n}%`), gsap.matchMedia().add(`(min-width: ${l}px)`, () => {
+      p === c.length - 1 && (h = `bottom ${n}%`), gsap.matchMedia().add(`(min-width: ${l}px)`, () => {
         gsap.timeline({
           scrollTrigger: {
             trigger: g,
@@ -270,14 +273,14 @@ window.addEventListener("DOMContentLoaded", (m) => {
     });
   }
 });
-const x = Array.from(document.querySelectorAll("img[loading='lazy']"));
-x.forEach(function(m) {
+const q = Array.from(document.querySelectorAll("img[loading='lazy']"));
+q.forEach(function(m) {
   m.addEventListener("load", function() {
     ScrollTrigger.refresh();
   });
 });
 function A() {
-  const m = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", d = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)", a = document.querySelector("[data-loader]");
+  const m = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", u = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)", a = document.querySelector("[data-loader]");
   if (a) {
     const i = a.querySelector("[data-loader-bar]"), r = a.querySelector("[data-loader-percentage]"), s = a.querySelector("[data-loader-logo]"), t = a.querySelector("[data-loader-bg]");
     let o = a.dataset.loaderDuration;
@@ -318,7 +321,7 @@ function A() {
             i,
             { clipPath: m },
             {
-              clipPath: d,
+              clipPath: u,
               duration: 1,
               ease: "power2.inOut"
             },
