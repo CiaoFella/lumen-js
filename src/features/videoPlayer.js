@@ -10,21 +10,25 @@ document.addEventListener("DOMContentLoaded", function () {
         playButton.click();
       });
   
-      playButton.addEventListener("click", () => {
-        if (video.paused) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
+      if (playButton) {
+        playButton.addEventListener("click", () => {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      }
   
-      soundButton.addEventListener("click", () => {
-        if (video.muted) {
-          video.muted = false;
-        } else {
-          video.muted = true;
-        }
-      });
+      if (soundButton) {
+        soundButton.addEventListener("click", () => {
+          if (video.muted) {
+            video.muted = false;
+          } else {
+            video.muted = true;
+          }
+        });
+      }
     });
   });
   

@@ -82,12 +82,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
     });
   }
-
-  const lazyImages = Array.from(document.querySelectorAll("img[loading='lazy']"));
-  lazyImages.forEach(function (lazyImage) {
-    lazyImage.addEventListener("load", function () {
-      ScrollTrigger.refresh();
-    });
-  });
 });
 
+const lazyImages = Array.from(document.querySelectorAll("img[loading='lazy']"));
+lazyImages.forEach(function (lazyImage) {
+  lazyImage.addEventListener("load", function () {
+    ScrollTrigger.refresh();
+  });
+});
