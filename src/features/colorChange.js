@@ -82,4 +82,6 @@ window.addEventListener("load", (event) => {
       });
     });
   }
+
+  ScrollTrigger.refresh();
 });
