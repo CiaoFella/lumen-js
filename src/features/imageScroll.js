@@ -19,6 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     tl.from(image, {
       width: "110%",
+      height: "110%",
     });
   });
 });
