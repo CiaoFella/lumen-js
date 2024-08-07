@@ -16,7 +16,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       scrollTrigger: {
         trigger: section,
         start: "top bottom",
-        markers: true,
         end: "top 80%",
         toggleActions: "none play none reset",
       },
@@ -37,6 +36,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
       mm.add("(max-width: 991px)", () => {
         headlineY = 75;
       });
+
+      tl.set(headline, { clipPath: fullClipPath });
 
       tl.fromTo(
         headlineSplit.lines,
@@ -62,6 +63,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
           types: "lines",
           lineClass: "split-line", // !important .line is already taken
         });
+
+        tl.set(item, { clipPath: fullClipPath });
 
         tl.fromTo(
           textSplit.lines,
