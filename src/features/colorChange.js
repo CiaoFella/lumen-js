@@ -70,8 +70,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const colorScroll = gsap.timeline({
           scrollTrigger: {
             trigger: element,
-            start: `clamp(top 15%)`,
-            end: endSetting,
+            start: "top top",
+            end: "center top",
             toggleActions: "play complete none reverse",
           },
         });
