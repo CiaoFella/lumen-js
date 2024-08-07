@@ -1,9 +1,9 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const section = document.querySelector("[data-image-scroll=section]");
-  const imageWraps = section.querySelectorAll("[data-image-scroll=image-wrap]");
+  const section = document.querySelector("[data-scroll-image-=section]");
+  const imageWraps = section.querySelectorAll("[data-scroll-image=image-wrap]");
 
   imageWraps.forEach((wrap) => {
-    const image = wrap.querySelector("[data-image-scroll=image]");
+    const image = wrap.querySelector("[data-scroll-image=image]");
     const scale = image.dataset.scale || 1.3;
     const tl = gsap.timeline({
       scrollTrigger: {
