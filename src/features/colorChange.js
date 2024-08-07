@@ -82,16 +82,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
     });
   }
-});
 
-document.addEventListener("lazybeforeunveil", function (e) {
-  var img = e.target;
+  document.addEventListener("lazybeforeunveil", function (e) {
+    var img = e.target;
 
-  if (img.tagName === "IMG") {
-    gsap.from(img, {
-      opacity: 0,
-      duration: 1,
-      ease: "power2.out",
-    });
-  }
+    if (img.tagName === "IMG") {
+      gsap.from(img, {
+        opacity: 0,
+        duration: 1.5,
+        ease: "power1.out",
+      });
+    }
+  });
 });
