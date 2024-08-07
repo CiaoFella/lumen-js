@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", () => {
         trigger: wrap,
         start: "top bottom",
         end: "top 90%",
-        toggleActions: "none play none reset",
+        scrub: true,
       },
       defaults: {
         duration: 1,
@@ -22,7 +22,9 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.from(image, {
-      transform: `translate3d(0px, 0px, 0px) scale3d(${scale}, ${scale}, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg)`,
+      scale: 1.1,
+      transformPerspective: 1000,
+      force3D: true, // Forces 3D acceleration
     });
   });
 });
