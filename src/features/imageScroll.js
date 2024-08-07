@@ -13,8 +13,8 @@ window.addEventListener("DOMContentLoaded", () => {
       scrollTrigger: {
         trigger: wrap,
         start: "top bottom",
-        end: "bottom center",
-        scrub: true,
+        end: "top center",
+        toggleActions: "none play none reset",
       },
       defaults: {
         duration: 1,
@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
     tl.from(image, {
       height: "120%",
       width: "120%",
-      ease: "none",
+      ease: "power2.out",
     });
   });
 });
