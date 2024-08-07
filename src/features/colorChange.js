@@ -110,15 +110,3 @@ function lazyImagesLoadedCallback() {
 const debouncedRefresh = debounce(lazyImagesLoadedCallback, 200);
 
 document.addEventListener("lazyLoaded", debouncedRefresh);
-
-document.addEventListener("lazybeforeunveil", function (e) {
-  var img = e.target;
-
-  if (img.tagName === "IMG") {
-    gsap.from(img, {
-      opacity: 0,
-      duration: 1.5,
-      ease: "power1.out",
-    });
-  }
-});
