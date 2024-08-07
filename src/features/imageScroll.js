@@ -18,8 +18,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.from(image, {
-      width: "110%",
-      height: "110%",
+      width: "130%",
+      height: "130%",
     });
   });
 });
