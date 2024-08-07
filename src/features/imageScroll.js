@@ -28,9 +28,8 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.from(image, {
-      height: 120,
-      width: 120,
-      transformOrigin: "center center", // Specify the transform origin
+      height: "120%",
+      width: "120%",
     });
   });
 });
