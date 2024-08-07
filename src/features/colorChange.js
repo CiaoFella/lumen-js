@@ -84,14 +84,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 });
 
-const lazyImages = Array.from(document.querySelectorAll("img[loading='lazy']"));
+document.addEventListener("lazybeforeunveil", function (e) {
+  var img = e.target;
 
-Promise.all(
-  lazyImages.map(function (lazyImage) {
-    return new Promise(function (resolve) {
-      lazyImage.addEventListener("load", resolve);
+  if (img.tagName === "IMG") {
+    gsap.from(img, {
+      opacity: 0,
+      duration: 1,
+      ease: "power2.out",
+      onComplete: () => ScrollTrigger.refresh(),
     });
-  })
-).then(function () {
-  ScrollTrigger.refresh();
+  }
 });
