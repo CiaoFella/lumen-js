@@ -2,21 +2,34 @@ window.addEventListener("DOMContentLoaded", () => {
   const section = document.querySelector("[data-scroll-image=section]");
   const imageWraps = section.querySelectorAll("[data-scroll-image=wrap]");
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const image = entry.target.querySelector("[data-scroll-image=image]");
-          const scale = image.dataset.scale || 1.17;
-          image.style.setProperty("--scale", scale);
-          image.classList.add("animate");
-        }
-      });
-    },
-    {
-      threshold: 0.1, // Adjust this value as needed
-    }
-  );
+  imageWraps.forEach((wrap) => {
+    const image = wrap.querySelector("[data-scroll-image=image]");
+    const scale = image.dataset.scale || 1.17;
 
-  imageWraps.forEach((wrap) => observer.observe(wrap));
+    // Add will-change property to the image element
+    image.style.willChange = "transform";
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: wrap,
+        start: "top bottom",
+        end: "bottom center",
+        onUpdate: (self) => {
+          // Use requestAnimationFrame for smoother animation
+          requestAnimationFrame(() => {
+            tl.progress(self.progress);
+          });
+        },
+      },
+      defaults: {
+        duration: 1,
+        ease: "none",
+      },
+    });
+
+    tl.from(image, {
+      scale: scale,
+      transformOrigin: "center center", // Specify the transform origin
+    });
+  });
 });
