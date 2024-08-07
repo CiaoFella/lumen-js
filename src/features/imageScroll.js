@@ -23,8 +23,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
     tl.from(image, {
       scale: 1.2,
-      transformPerspective: 100,
       force3D: true, // Forces 3D acceleration
+      ease: "none",
     });
   });
 });
