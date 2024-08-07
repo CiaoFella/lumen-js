@@ -82,31 +82,43 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
     });
   }
+});
 
-  function lazyImagesLoadedCallback() {
-    const images = document.querySelectorAll(".lazyload");
-    const loadedImages = images.filter(
-      (img) => img.complete && img.naturalWidth > 0
-    );
-    const loadPercentage = (loadedImages.length / images.length) * 100;
+function debounce(func, wait) {
+  let timeout;
+  return function (...args) {
+    const context = this;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(context, args), wait);
+  };
+}
 
-    if (loadPercentage >= 80) {
-      ScrollTrigger.refresh(true);
-    }
+function lazyImagesLoadedCallback() {
+  const images = document.querySelectorAll(".lazyload");
+  const loadedImages = images.filter(
+    (img) => img.complete && img.naturalWidth > 0
+  );
+  const loadPercentage = (loadedImages.length / images.length) * 100;
+
+  if (loadPercentage >= 80) {
+    console.log("Images loaded");
+    ScrollTrigger.refresh(true);
+    document.removeEventListener("lazyLoaded", lazyImagesLoadedCallback);
   }
+}
 
-  // Add event listener to LazySizes' lazyLoaded event
-  document.addEventListener("lazyLoaded", lazyImagesLoadedCallback);
+const debouncedRefresh = debounce(lazyImagesLoadedCallback, 200);
 
-  document.addEventListener("lazybeforeunveil", function (e) {
-    var img = e.target;
+document.addEventListener("lazyLoaded", debouncedRefresh);
 
-    if (img.tagName === "IMG") {
-      gsap.from(img, {
-        opacity: 0,
-        duration: 1.5,
-        ease: "power1.out",
-      });
-    }
-  });
+document.addEventListener("lazybeforeunveil", function (e) {
+  var img = e.target;
+
+  if (img.tagName === "IMG") {
+    gsap.from(img, {
+      opacity: 0,
+      duration: 1.5,
+      ease: "power1.out",
+    });
+  }
 });
