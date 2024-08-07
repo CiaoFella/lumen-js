@@ -70,7 +70,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const colorScroll = gsap.timeline({
           scrollTrigger: {
             trigger: element,
-            start: `clamp(top 1%)`,
+            start: `clamp(top 0%)`,
             end: endSetting,
             toggleActions: "play complete none reverse",
           },
@@ -83,30 +83,3 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 });
-
-function debounce(func, wait) {
-  let timeout;
-  return function (...args) {
-    const context = this;
-    clearTimeout(timeout);
-    timeout = setTimeout(() => func.apply(context, args), wait);
-  };
-}
-
-function lazyImagesLoadedCallback() {
-  const images = document.querySelectorAll(".lazyload");
-  const loadedImages = images.filter(
-    (img) => img.complete && img.naturalWidth > 0
-  );
-  const loadPercentage = (loadedImages.length / images.length) * 100;
-
-  if (loadPercentage >= 80) {
-    console.log("Images loaded");
-    ScrollTrigger.refresh(true);
-    document.removeEventListener("lazyLoaded", lazyImagesLoadedCallback);
-  }
-}
-
-const debouncedRefresh = debounce(lazyImagesLoadedCallback, 200);
-
-document.addEventListener("lazyLoaded", debouncedRefresh);
