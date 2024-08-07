@@ -11,23 +11,27 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  imageWraps.forEach((wrap) => {
-    const image = wrap.querySelector("[data-scroll-image=image]");
-    if (!image) return;
-    const scale = parseFloat(image.dataset.scale) || 1.17;
+  // Create a single ScrollTrigger for the section
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top bottom",
+    end: "bottom top",
+    scrub: true,
+    onUpdate: (self) => {
+      const progress = self.progress;
+      imageWraps.forEach((wrap) => {
+        const image = wrap.querySelector("[data-scroll-image=image]");
+        if (!image) return;
+        const scale = parseFloat(image.dataset.scale) || 1.17;
+        const startScale = 1;
+        const endScale = scale;
 
-    // Create GSAP timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: wrap,
-        start: "top bottom",
-        end: "bottom center",
-        scrub: true,
-      },
-      defaults: { duration: 1 },
-    });
+        // Calculate the scale based on scroll progress
+        const currentScale = startScale + (endScale - startScale) * progress;
 
-    // Reduce precision for better performance
-    tl.from(image, { scale: scale.toFixed(2) });
+        // Apply the scale to the image
+        gsap.to(image, { scale: currentScale, overwrite: "auto" });
+      });
+    },
   });
 });
