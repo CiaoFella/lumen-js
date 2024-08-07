@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       scrollTrigger: {
         trigger: section,
         start: "top bottom",
+        markers: true,
         end: "top 80%",
         toggleActions: "none play none reset",
       },
@@ -45,7 +46,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
           y: 0,
           duration: headlineDuration,
           delay: headlineDelay,
-          markers: true,
           stagger: 0.25,
           ease: "expo.out",
         },
