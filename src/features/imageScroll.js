@@ -14,22 +14,17 @@ window.addEventListener("DOMContentLoaded", () => {
         trigger: wrap,
         start: "top bottom",
         end: "bottom center",
-        onUpdate: (self) => {
-          // Use requestAnimationFrame for smoother animation
-          requestAnimationFrame(() => {
-            tl.progress(self.progress);
-          });
-        },
+        scrub: true,
       },
       defaults: {
         duration: 1,
-        ease: "none",
       },
     });
 
     tl.from(image, {
       height: "120%",
       width: "120%",
+      ease: "none",
     });
   });
 });
