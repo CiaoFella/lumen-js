@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
       scrollTrigger: {
         trigger: wrap,
         start: "top bottom",
-        end: "top 90%",
+        end: "top center",
         scrub: true,
       },
       defaults: {
@@ -23,7 +23,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     tl.from(image, {
       scale: 1.1,
-      transformPerspective: 1000,
+      transformPerspective: 100,
       force3D: true, // Forces 3D acceleration
     });
   });
