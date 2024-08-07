@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.from(image, {
-      scale: scale,
+      width: "110%",
     });
   });
 });
