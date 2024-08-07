@@ -4,12 +4,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   imageWraps.forEach((wrap) => {
     const image = wrap.querySelector("[data-scroll-image=image]");
-    const scale = image.dataset.scale || 1.3;
+    const scale = image.dataset.scale || 1.1;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: wrap,
         start: "top bottom",
-        end: "bottom 75%",
+        end: "bottom center",
         scrub: true,
       },
       defaults: {
