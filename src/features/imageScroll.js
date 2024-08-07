@@ -1,14 +1,22 @@
 window.addEventListener("DOMContentLoaded", () => {
   const section = document.querySelector("[data-scroll-image=section]");
+  if (!section) return;
   const imageWraps = section.querySelectorAll("[data-scroll-image=wrap]");
+
+  // Use will-change to hint the browser
+  imageWraps.forEach((wrap) => {
+    const image = wrap.querySelector("[data-scroll-image=image]");
+    if (image) {
+      image.style.willChange = "transform";
+    }
+  });
 
   imageWraps.forEach((wrap) => {
     const image = wrap.querySelector("[data-scroll-image=image]");
-    const scale = image.dataset.scale || 1.17;
+    if (!image) return;
+    const scale = parseFloat(image.dataset.scale) || 1.17;
 
-    // Add will-change property to the image element
-    image.style.willChange = "transform";
-
+    // Create GSAP timeline
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: wrap,
@@ -16,15 +24,10 @@ window.addEventListener("DOMContentLoaded", () => {
         end: "bottom center",
         scrub: true,
       },
-      defaults: {
-        duration: 1,
-      },
+      defaults: { duration: 1 },
     });
 
-    tl.from(image, {
-      height: "120%",
-      width: "120%",
-      ease: "none",
-    });
+    // Reduce precision for better performance
+    tl.from(image, { scale: scale.toFixed(2) });
   });
 });
