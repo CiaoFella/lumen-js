@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", (event) => {
+window.addEventListener("load", (event) => {
   // attribute value checker
   function attr(defaultVal, attrVal) {
     const defaultValType = typeof defaultVal;
