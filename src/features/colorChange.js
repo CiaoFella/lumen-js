@@ -1,4 +1,5 @@
-window.addEventListener("load", (event) => {
+window.addEventListener("DOMContentLoaded", (event) => {
+  gsap.registerPlugin(ScrollTrigger);
   // attribute value checker
   function attr(defaultVal, attrVal) {
     const defaultValType = typeof defaultVal;
@@ -35,7 +36,6 @@ window.addEventListener("load", (event) => {
         targetStylesheet.getAttribute("percent-from-top")
       ),
       breakpointSetting = attr(0, targetStylesheet.getAttribute("min-width"));
-    gsap.registerPlugin(ScrollTrigger);
 
     const animateElements = document.querySelectorAll("[animate-body-to]");
     animateElements.forEach((element, index) => {
@@ -82,6 +82,4 @@ window.addEventListener("load", (event) => {
       });
     });
   }
-
-  ScrollTrigger.refresh();
 });
