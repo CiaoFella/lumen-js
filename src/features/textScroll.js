@@ -30,12 +30,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
       const headlineDelay = headline.dataset.delay || 0;
       const headlineDuration = headline.dataset.duration || 2;
 
-      let headlineY = 150
-      let mm = gsap.matchMedia()
+      let headlineY = 150;
+      let mm = gsap.matchMedia();
 
-      mm.add('(max-width: 991px)', () => {
-        headlineY = 75
-      })
+      mm.add("(max-width: 991px)", () => {
+        headlineY = 75;
+      });
 
       tl.fromTo(
         headlineSplit.lines,
@@ -45,6 +45,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
           y: 0,
           duration: headlineDuration,
           delay: headlineDelay,
+          markers: true,
           stagger: 0.25,
           ease: "expo.out",
         },
