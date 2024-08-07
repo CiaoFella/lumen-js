@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
       scrollTrigger: {
         trigger: wrap,
         start: "top bottom",
-        end: "top center",
+        end: "top 90%",
         toggleActions: "none play none reset",
       },
       defaults: {
@@ -22,9 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.from(image, {
-      height: "120%",
-      width: "120%",
-      ease: "power2.out",
+      scale: 1.1,
     });
   });
 });
