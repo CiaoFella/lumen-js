@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
         const currentScale = startScale + (endScale - startScale) * progress;
 
         // Apply the scale to the image
-        gsap.to(image, { scale: currentScale, overwrite: "auto" });
+        gsap.from(image, { scale: currentScale, overwrite: "auto" });
       });
     },
   });
