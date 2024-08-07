@@ -91,7 +91,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const loadPercentage = (loadedImages.length / images.length) * 100;
 
     if (loadPercentage >= 80) {
-      ScrollTrigger.refresh();
+      ScrollTrigger.refresh(true);
     }
   }
 
