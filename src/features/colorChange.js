@@ -83,6 +83,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
   }
 
+  function lazyImagesLoadedCallback() {
+    const images = document.querySelectorAll(".lazyload");
+    const loadedImages = images.filter(
+      (img) => img.complete && img.naturalWidth > 0
+    );
+    const loadPercentage = (loadedImages.length / images.length) * 100;
+
+    if (loadPercentage >= 80) {
+      ScrollTrigger.refresh();
+    }
+  }
+
+  // Add event listener to LazySizes' lazyLoaded event
+  document.addEventListener("lazyLoaded", lazyImagesLoadedCallback);
+
   document.addEventListener("lazybeforeunveil", function (e) {
     var img = e.target;
 
