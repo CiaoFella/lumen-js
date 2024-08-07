@@ -92,7 +92,6 @@ document.addEventListener("lazybeforeunveil", function (e) {
       opacity: 0,
       duration: 1,
       ease: "power2.out",
-      onComplete: () => ScrollTrigger.refresh(),
     });
   }
 });
