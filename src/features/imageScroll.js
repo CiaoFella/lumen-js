@@ -4,7 +4,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   imageWraps.forEach((wrap) => {
     const image = wrap.querySelector("[data-scroll-image=image]");
-    const scale = image.dataset.scale || 1.1;
+    const scale = image.dataset.scale || 1.17;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: wrap,
@@ -18,8 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     tl.from(image, {
-      width: "130%",
-      height: "130%",
+      scale: scale,
     });
   });
 });
