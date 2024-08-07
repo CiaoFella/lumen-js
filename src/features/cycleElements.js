@@ -53,4 +53,33 @@ window.addEventListener("DOMContentLoaded", (event) => {
       });
     });
   });
+
+  function handleSmallScreen() {
+    const containers = document.querySelectorAll("[data-cycle-container]");
+
+    containers.forEach((container) => {
+      const children = container.querySelectorAll("[data-cycle-item]");
+
+      // Keep only the first child, remove the rest
+      for (let i = 1; i < children.length; i++) {
+        children[i].remove();
+      }
+    });
+  }
+
+  // Initial check
+  if (window.innerWidth < 992) {
+    handleSmallScreen();
+  }
+
+  // Listen for resize events
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < 992) {
+      handleSmallScreen();
+    } else {
+      // Refresh the page when going from small to large screen
+      // This is needed to restore removed elements
+      location.reload();
+    }
+  });
 });
