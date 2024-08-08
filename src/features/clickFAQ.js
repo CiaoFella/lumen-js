@@ -15,15 +15,17 @@ window.addEventListener("DOMContentLoaded", () => {
       paused: true,
     });
 
+    clickTl.set(faqAnswer, { height: 0 });
+
     clickTl
-      .fromTo(faqAnswer, { height: 0 }, { height: "auto" })
+      .to(faqAnswer, { height: "auto" })
       .to(icon, { rotate: 45 }, "<")
       .to(faqQuestion, { color: "white" }, "<")
       .to(faqQuestion, { padding: "0 16px" }, "<");
 
     hoverTl
       .to(faqQuestion, { color: "white" }, "<")
-      .to(faqQuestion, { padding: "0 16px" }, "<");
+      .to(faqQuestion, { padding: "0 16px", duration: 0.25 }, "<");
 
     faqQuestion.addEventListener("click", () => {
       clickTl.reversed() ? clickTl.play() : clickTl.reverse();
