@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
     gsap.set(faqAnswer, { height: 0 });
 
     clickTl
-      .to(faqAnswer, { height: "auto", duration: 0.25, ease: "power2.inOut" })
+      .to(faqAnswer, { height: "auto", duration: 0.5 })
       .to(icon, { rotate: 45 }, "<")
       .to(
         faqQuestion,
@@ -44,8 +44,8 @@ window.addEventListener("DOMContentLoaded", () => {
       );
 
     faqQuestion.addEventListener("click", () => {
-      faqItem.classList.toggle("is-active");
-      if (faqItem.classList.contains("is-active")) {
+      faqAnswer.classList.toggle("is-active");
+      if (faqAnswer.classList.contains("is-active")) {
         clickTl.play();
       } else {
         clickTl.reverse();
