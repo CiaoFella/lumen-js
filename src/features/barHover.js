@@ -36,13 +36,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const mouseDirection = getMouseEnterDirection(event, element);
         const pathDirection = handleCardHoverIn(mouseDirection, false);
         animateCardHover(bgFillPath, pathDirection.start, pathDirection.end);
-        tl.play();
+        // tl.play();
       });
       element.addEventListener("mouseleave", (event) => {
         const mouseDirection = getMouseEnterDirection(event, element);
         const pathDirection = handleCardHoverOut(mouseDirection, false);
         animateCardHover(bgFillPath, pathDirection.start, pathDirection.end);
-        tl.reverse();
+        // tl.reverse();
       });
     });
   });
