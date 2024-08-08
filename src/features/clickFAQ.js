@@ -9,12 +9,11 @@ window.addEventListener("DOMContentLoaded", () => {
     const clickTl = gsap.timeline({
       defaults: { duration: 0.25 },
       paused: true,
+      force3D: true,
     });
 
-    gsap.set(faqAnswer, { height: 0 });
-
     clickTl
-      .to(faqAnswer, { height: "auto", ease: "none" })
+      .to(faqAnswer, { height: "auto", ease: "power1.inOut" })
       .to(icon, { rotate: 45 }, "<");
 
     faqQuestion.addEventListener("click", () => {
