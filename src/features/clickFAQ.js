@@ -15,7 +15,7 @@ window.addEventListener("DOMContentLoaded", () => {
       paused: true,
     });
 
-    clickTl.set(faqAnswer, { height: 0 });
+    gsap.set(faqAnswer, { height: 0 });
 
     clickTl
       .to(faqAnswer, { height: "auto", duration: 0.25, ease: "power2.inOut" })
