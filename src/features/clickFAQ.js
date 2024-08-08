@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
 
     clickTl
-      .to(faqAnswer, { height: "auto", ease: "power1.inOut" })
+      .to(faqAnswer, { height: "auto", ease: "power2.inOut", duration: 0.4 })
       .to(icon, { rotate: 45 }, "<");
 
     faqQuestion.addEventListener("click", () => {
