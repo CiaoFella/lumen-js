@@ -44,8 +44,8 @@ window.addEventListener("DOMContentLoaded", () => {
       );
 
     faqQuestion.addEventListener("click", () => {
-      faqAnswer.classList.toggle("is-active");
-      if (faqAnswer.classList.contains("is-active")) {
+      faqQuestion.classList.toggle("is-active");
+      if (faqQuestion.classList.contains("is-active")) {
         clickTl.play();
       } else {
         clickTl.reverse();
