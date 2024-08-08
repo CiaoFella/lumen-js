@@ -79,8 +79,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         );
       });
     }
-
-    ScrollTrigger.refresh();
   });
 
   function unwrapSpanAndPreserveClasses(element) {
