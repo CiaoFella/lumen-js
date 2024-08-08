@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Scroll-Triggered Image Scaling
+# Image Scaling
 
 ## Overview
 
