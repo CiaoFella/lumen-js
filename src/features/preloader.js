@@ -45,7 +45,7 @@ function pageLoader() {
         },
         onComplete: () => {
           tl.to([percentageText, logo], {
-            y: 110,
+            y: 150,
             duration: 1, // This duration remains the same
             stagger: 0.1,
             ease: "power2.inOut",
