@@ -6,15 +6,34 @@ window.addEventListener("DOMContentLoaded", () => {
     const faqAnswer = faqItem.querySelector("[data-faq=answer]");
     const icon = faqItem.querySelector("[data-faq=icon]");
 
-    const tl = gsap.timeline({ defaults: { duration: 0.5 }, paused: true });
+    const clickTl = gsap.timeline({
+      defaults: { duration: 0.5 },
+      paused: true,
+    });
+    const hoverTl = gsap.timeline({
+      defaults: { duration: 0.5 },
+      paused: true,
+    });
 
-    tl.fromTo(faqAnswer, { height: 0 }, { height: "auto" })
+    clickTl
+      .fromTo(faqAnswer, { height: 0 }, { height: "auto" })
       .to(icon, { rotate: 45 }, "<")
       .to(faqQuestion, { color: "white" }, "<")
       .to(faqQuestion, { padding: "0 16px" }, "<");
 
+    hoverTl
+      .to(faqQuestion, { color: "white" }, "<")
+      .to(faqQuestion, { padding: "0 16px" }, "<");
+
     faqQuestion.addEventListener("click", () => {
-      tl.reversed() ? tl.play() : tl.reverse();
+      clickTl.reversed() ? clickTl.play() : clickTl.reverse();
+    });
+
+    faqQuestion.addEventListener("mouseenter", () => {
+      hoverTl.play();
+    });
+    faqQuestion.addEventListener("mouseleave", () => {
+      hoverTl.reverse();
     });
   });
 });
