@@ -10,10 +10,6 @@ window.addEventListener("DOMContentLoaded", () => {
       defaults: { duration: 0.5 },
       paused: true,
     });
-    const hoverTl = gsap.timeline({
-      defaults: { duration: 0.5 },
-      paused: true,
-    });
 
     gsap.set(faqAnswer, { height: 0 });
 
@@ -31,18 +27,6 @@ window.addEventListener("DOMContentLoaded", () => {
         "<"
       );
 
-    hoverTl
-      .to(
-        faqQuestion,
-        { color: "white", duration: 0.25, ase: "power2.inOut" },
-        0
-      )
-      .to(
-        faqQuestion,
-        { padding: "0 16px", duration: 0.25, ase: "power2.inOut" },
-        "<"
-      );
-
     faqQuestion.addEventListener("click", () => {
       faqQuestion.classList.toggle("is-active");
       if (faqQuestion.classList.contains("is-active")) {
@@ -50,13 +34,6 @@ window.addEventListener("DOMContentLoaded", () => {
       } else {
         clickTl.reverse();
       }
-    });
-
-    faqQuestion.addEventListener("mouseenter", () => {
-      hoverTl.play();
-    });
-    faqQuestion.addEventListener("mouseleave", () => {
-      hoverTl.reverse();
     });
   });
 });

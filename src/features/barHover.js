@@ -27,17 +27,22 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const elements = section.querySelectorAll("[data-animate-hover=bg]");
 
     elements.forEach((element) => {
+      const tl = gsap.timeline({ paused: true });
+      tl.to(element, { color: "white", duration: 0.25, padding: "0 16px" });
+
       const bgFillPath = element.querySelector("[data-animate=bg-filler-path]");
 
       element.addEventListener("mouseenter", (event) => {
         const mouseDirection = getMouseEnterDirection(event, element);
         const pathDirection = handleCardHoverIn(mouseDirection, false);
         animateCardHover(bgFillPath, pathDirection.start, pathDirection.end);
+        tl.play();
       });
       element.addEventListener("mouseleave", (event) => {
         const mouseDirection = getMouseEnterDirection(event, element);
         const pathDirection = handleCardHoverOut(mouseDirection, false);
         animateCardHover(bgFillPath, pathDirection.start, pathDirection.end);
+        tl.reverse();
       });
     });
   });
