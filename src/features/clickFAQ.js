@@ -20,11 +20,23 @@ window.addEventListener("DOMContentLoaded", () => {
     clickTl
       .to(faqAnswer, { height: "auto", duration: 0.25, ease: "power2.inOut" })
       .to(icon, { rotate: 45 }, "<")
-      .to(faqQuestion, { color: "white" }, "<")
-      .to(faqQuestion, { padding: "0 16px" }, "<");
+      .to(
+        faqQuestion,
+        { color: "white", duration: 0.25, ase: "power2.inOut" },
+        "<"
+      )
+      .to(
+        faqQuestion,
+        { padding: "0 16px", duration: 0.25, ase: "power2.inOut" },
+        "<"
+      );
 
     hoverTl
-      .to(faqQuestion, { color: "white" }, "<")
+      .to(
+        faqQuestion,
+        { color: "white", duration: 0.25, ase: "power2.inOut" },
+        0
+      )
       .to(
         faqQuestion,
         { padding: "0 16px", duration: 0.25, ase: "power2.inOut" },
