@@ -1,51 +1,51 @@
-const S = "M 0 100 V 0 Q 500 75 1000 0 V 0 H 0 z", v = "M 0 100 V 100 Q 500 100 1000 100 V 0 H 0 z", w = "M 0 100 V 100 Q 500 25 1000 100 V 100 z", T = "M 0 100 V 0 Q 500 0 1000 0 V 100 z", E = "M 0 100 V 100 Q 500 25 1000 100 V 0 H 0 z", b = "M 0 100 V 0 Q 500 0 1000 0 V 0 H 0 z", C = "M 0 100 V 0 Q 500 75 1000 0 V 100 z", x = "M 0 100 V 100 Q 500 100 1000 100 V 100 z";
+const S = "M 0 100 V 0 Q 500 75 1000 0 V 0 H 0 z", v = "M 0 100 V 100 Q 500 100 1000 100 V 0 H 0 z", w = "M 0 100 V 100 Q 500 25 1000 100 V 100 z", C = "M 0 100 V 0 Q 500 0 1000 0 V 100 z", E = "M 0 100 V 100 Q 500 25 1000 100 V 0 H 0 z", b = "M 0 100 V 0 Q 500 0 1000 0 V 0 H 0 z", q = "M 0 100 V 0 Q 500 75 1000 0 V 100 z", T = "M 0 100 V 100 Q 500 100 1000 100 V 100 z";
 window.addEventListener("DOMContentLoaded", (m) => {
   document.querySelectorAll(
     "[data-animate-hover=bg-section]"
   ).forEach((t) => {
     t.querySelectorAll("[data-animate-hover=bg]").forEach((e) => {
       const n = e.querySelector("[data-animate=bg-filler-path]");
-      e.addEventListener("mouseenter", (l) => {
-        const d = a(l, e), c = i(d);
-        s(n, c.start, c.end);
-      }), e.addEventListener("mouseleave", (l) => {
-        const d = a(l, e), c = r(d);
-        s(n, c.start, c.end);
+      e.addEventListener("mouseenter", (c) => {
+        const u = o(c, e), d = i(u);
+        s(n, d.start, d.end);
+      }), e.addEventListener("mouseleave", (c) => {
+        const u = o(c, e), d = r(u);
+        s(n, d.start, d.end);
       });
     });
   });
-  function a(t, o) {
-    const e = o.getBoundingClientRect(), n = t.clientX, l = t.clientY, d = Math.abs(e.top - l), c = Math.abs(e.bottom - l), g = Math.abs(e.left - n), p = Math.abs(e.right - n);
-    var y = Math.min(
+  function o(t, a) {
+    const e = a.getBoundingClientRect(), n = t.clientX, c = t.clientY, u = Math.abs(e.top - c), d = Math.abs(e.bottom - c), g = Math.abs(e.left - n), p = Math.abs(e.right - n);
+    var h = Math.min(
+      u,
       d,
-      c,
       g,
       p
     );
-    switch (y) {
+    switch (h) {
       case g:
         return "left";
       case p:
         return "right";
-      case d:
+      case u:
         return "top";
-      case c:
+      case d:
         return "bottom";
     }
   }
-  function i(t, o) {
+  function i(t, a) {
     let e, n;
-    return t === "top" ? (e = S, n = v) : t === "bottom" ? (e = w, n = T) : (e = S, n = v), { start: e, end: n };
+    return t === "top" ? (e = S, n = v) : t === "bottom" ? (e = w, n = C) : (e = S, n = v), { start: e, end: n };
   }
-  function r(t, o) {
+  function r(t, a) {
     let e, n;
-    return t === "top" ? (e = E, n = b) : t === "bottom" ? (e = C, n = x) : (e = E, n = b), { start: e, end: n };
+    return t === "top" ? (e = E, n = b) : t === "bottom" ? (e = q, n = T) : (e = E, n = b), { start: e, end: n };
   }
-  function s(t, o, e) {
-    if (o && e)
+  function s(t, a, e) {
+    if (a && e)
       return gsap.fromTo(
         t,
-        { attr: { d: o } },
+        { attr: { d: a } },
         {
           attr: { d: e },
           duration: 0.5,
@@ -55,24 +55,23 @@ window.addEventListener("DOMContentLoaded", (m) => {
   }
 });
 document.addEventListener("DOMContentLoaded", function() {
-  document.querySelectorAll("[data-video=video-wrapper]").forEach((u) => {
-    const a = u.querySelector("[data-video=video]"), i = u.querySelector("[data-video=play-button]"), r = u.querySelector("[data-video=sound-button]");
-    a.addEventListener("click", () => {
-      i ? i.click() : a.paused ? a.play() : a.pause();
+  document.querySelectorAll("[data-video=video-wrapper]").forEach((l) => {
+    const o = l.querySelector("[data-video=video]"), i = l.querySelector("[data-video=play-button]"), r = l.querySelector("[data-video=sound-button]");
+    o.addEventListener("click", () => {
+      i ? i.click() : o.paused ? o.play() : o.pause();
     }), i && i.addEventListener("click", () => {
-      a.paused ? a.play() : a.pause();
+      o.paused ? o.play() : o.pause();
     }), r && r.addEventListener("click", () => {
-      a.muted ? a.muted = !1 : a.muted = !0;
+      o.muted ? o.muted = !1 : o.muted = !0;
     });
   });
 });
 window.addEventListener("DOMContentLoaded", (m) => {
-  gsap.registerPlugin(ScrollTrigger);
-  const u = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)", a = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
+  const l = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)", o = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
   document.querySelectorAll(
     "[data-animate-scroll=text-section]"
   ).forEach((s) => {
-    const t = s.querySelector("[data-animate-scroll=headline]"), o = s.querySelectorAll("[data-animate-scroll=text]"), e = gsap.timeline({
+    const t = s.querySelector("[data-animate-scroll=headline]"), a = s.querySelectorAll("[data-animate-scroll=text]"), e = gsap.timeline({
       scrollTrigger: {
         trigger: s,
         start: "top bottom",
@@ -86,38 +85,38 @@ window.addEventListener("DOMContentLoaded", (m) => {
         types: "lines",
         lineClass: "split-line"
         // !important .line is already taken
-      }), l = t.dataset.delay || 0, d = t.dataset.duration || 2;
-      let c = 150;
+      }), c = t.dataset.delay || 0, u = t.dataset.duration || 2;
+      let d = 150;
       gsap.matchMedia().add("(max-width: 991px)", () => {
-        c = 75;
-      }), e.fromTo(
+        d = 75;
+      }), e.set(t, { clipPath: l }), e.fromTo(
         n.lines,
-        { clipPath: a, y: c },
+        { clipPath: o, y: d },
         {
-          clipPath: u,
+          clipPath: l,
           y: 0,
-          duration: d,
-          delay: l,
+          duration: u,
+          delay: c,
           stagger: 0.25,
           ease: "expo.out"
         },
         0
       );
     }
-    o && o.length > 0 && o.forEach((n) => {
-      const l = n.dataset.delay || 0, d = n.dataset.duration || 2, c = new SplitType(n, {
+    a && a.length > 0 && a.forEach((n) => {
+      const c = n.dataset.delay || 0, u = n.dataset.duration || 2, d = new SplitType(n, {
         types: "lines",
         lineClass: "split-line"
         // !important .line is already taken
       });
-      e.fromTo(
-        c.lines,
-        { clipPath: a, y: 150 },
+      e.set(n, { clipPath: l }), e.fromTo(
+        d.lines,
+        { clipPath: o, y: 150 },
         {
-          clipPath: u,
+          clipPath: l,
           y: 0,
-          duration: d,
-          delay: l,
+          duration: u,
+          delay: c,
           stagger: 0.15,
           ease: "expo.out"
         },
@@ -126,52 +125,86 @@ window.addEventListener("DOMContentLoaded", (m) => {
     });
   });
   function r(s) {
-    s.querySelectorAll("span").forEach((o) => {
-      const e = o.className, n = document.createDocumentFragment();
-      o.childNodes.forEach((l) => {
-        if (l.nodeType === Node.TEXT_NODE) {
-          const d = l.textContent.split(/\s+/);
-          d.forEach((c, g) => {
+    s.querySelectorAll("span").forEach((a) => {
+      const e = a.className, n = document.createDocumentFragment();
+      a.childNodes.forEach((c) => {
+        if (c.nodeType === Node.TEXT_NODE) {
+          const u = c.textContent.split(/\s+/);
+          u.forEach((d, g) => {
             const p = document.createElement("span");
-            p.textContent = c, e && (p.className = e), n.appendChild(p), g < d.length - 1 && n.appendChild(document.createTextNode(" "));
+            p.textContent = d, e && (p.className = e), n.appendChild(p), g < u.length - 1 && n.appendChild(document.createTextNode(" "));
           });
-        } else l.nodeType === Node.ELEMENT_NODE && l.tagName === "BR" && n.appendChild(l.cloneNode());
-      }), o.replaceWith(n);
+        } else c.nodeType === Node.ELEMENT_NODE && c.tagName === "BR" && n.appendChild(c.cloneNode());
+      }), a.replaceWith(n);
     });
   }
 });
-window.addEventListener("DOMContentLoaded", (m) => {
-  gsap.matchMedia().add("(min-width: 992px)", () => {
-    document.querySelectorAll("[data-cycle-container]").forEach((i) => {
-      const r = i.querySelectorAll("[data-cycle-item]");
-      let s = 0, t = !1, o;
-      gsap.set(r, { autoAlpha: 0 }), r.length > 0 && gsap.set(r[0], { autoAlpha: 1 });
-      function e() {
-        t || (gsap.to(r[s], { autoAlpha: 0, duration: 0 }), s = (s + 1) % r.length, gsap.to(r[s], {
-          autoAlpha: 1,
-          duration: 0,
-          onComplete: () => {
-            o = gsap.delayedCall(0.5, e);
-          }
-        }));
-      }
-      i.addEventListener("mouseenter", () => {
-        t = !1, (!o || !o.isActive()) && e();
-      }), i.addEventListener("mouseleave", () => {
-        t = !0, o && o.kill();
+window.addEventListener("DOMContentLoaded", () => {
+  const m = document.querySelectorAll("[data-scroll-image=section]");
+  !m || m.length === 0 || m.forEach((l) => {
+    const o = l.querySelectorAll("[data-scroll-image=wrap]");
+    !o || o.length === 0 || o.forEach((i) => {
+      const r = i.querySelector("[data-scroll-image=image]"), s = r.dataset.scale || 1.17;
+      r.style.willChange = "transform", gsap.timeline({
+        scrollTrigger: {
+          trigger: i,
+          start: "top bottom",
+          end: "bottom center",
+          scrub: !0
+        },
+        defaults: {
+          duration: 1
+        }
+      }).from(r, {
+        scale: s,
+        force3D: !0,
+        ease: "none"
       });
     });
   });
 });
 window.addEventListener("DOMContentLoaded", (m) => {
-  function u() {
-    const a = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)", i = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)", r = document.querySelector("[data-menu=wrapper]"), s = r.querySelector("[data-menu=trigger]"), t = r.querySelector("[data-menu=flyout]"), o = t.querySelector("[data-menu=bg]"), e = t.querySelectorAll("[data-menu=item]"), n = t.querySelectorAll("[data-menu=num]"), l = t.querySelector("[data-menu=divider]"), d = t.querySelectorAll("[data-menu=element]"), c = t.querySelector("[data-menu=split]");
-    let g = new SplitType(c, {
+  gsap.matchMedia().add("(min-width: 992px)", () => {
+    document.querySelectorAll("[data-cycle-container]").forEach((r) => {
+      const s = r.querySelectorAll("[data-cycle-item]");
+      let t = 0, a = !1, e;
+      gsap.set(s, { autoAlpha: 0 }), s.length > 0 && gsap.set(s[0], { autoAlpha: 1 });
+      function n() {
+        a || (gsap.to(s[t], { autoAlpha: 0, duration: 0 }), t = (t + 1) % s.length, gsap.to(s[t], {
+          autoAlpha: 1,
+          duration: 0,
+          onComplete: () => {
+            e = gsap.delayedCall(0.5, n);
+          }
+        }));
+      }
+      r.addEventListener("mouseenter", () => {
+        a = !1, (!e || !e.isActive()) && n();
+      }), r.addEventListener("mouseleave", () => {
+        a = !0, e && e.kill();
+      });
+    });
+  });
+  function o() {
+    document.querySelectorAll("[data-cycle-container]").forEach((r) => {
+      const s = r.querySelectorAll("[data-cycle-item]");
+      for (let t = 1; t < s.length; t++)
+        s[t].remove();
+    });
+  }
+  window.innerWidth < 992 && o(), window.addEventListener("resize", () => {
+    window.innerWidth < 992 ? o() : location.reload();
+  });
+});
+window.addEventListener("DOMContentLoaded", (m) => {
+  function l() {
+    const o = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)", i = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)", r = document.querySelector("[data-menu=wrapper]"), s = r.querySelector("[data-menu=trigger]"), t = r.querySelector("[data-menu=flyout]"), a = t.querySelector("[data-menu=bg]"), e = t.querySelectorAll("[data-menu=item]"), n = t.querySelectorAll("[data-menu=num]"), c = t.querySelector("[data-menu=divider]"), u = t.querySelectorAll("[data-menu=element]"), d = t.querySelector("[data-menu=split]");
+    let g = new SplitType(d, {
       types: "lines",
       lineClass: "split-line"
     });
     const p = gsap.timeline({ paused: !0 });
-    p.to(t, { display: "flex", duration: 0 }).from(o, { height: "0vh", duration: 1, ease: "power4.inOut" }, 0).to(
+    p.to(t, { display: "flex", duration: 0 }).from(a, { height: "0vh", duration: 1, ease: "power4.inOut" }, 0).to(
       s,
       { rotate: -45, duration: 0.5, ease: "power2.inOut" },
       "<"
@@ -188,18 +221,18 @@ window.addEventListener("DOMContentLoaded", (m) => {
       n,
       { clipPath: i, y: 50 },
       {
-        clipPath: a,
+        clipPath: o,
         y: 0,
         ease: "expo.out",
         duration: 1.5,
         stagger: 0.1
       },
       "<-0.1"
-    ).call(() => r.classList.toggle("is-active"), [], "<").from(l, { width: 0, duration: 2, ease: "power4.inOut" }, "<+0.5").fromTo(
-      [g.lines, d],
+    ).call(() => r.classList.toggle("is-active"), [], "<").from(c, { width: 0, duration: 2, ease: "power4.inOut" }, "<+0.5").fromTo(
+      [g.lines, u],
       { clipPath: i, y: 50 },
       {
-        clipPath: a,
+        clipPath: o,
         y: 0,
         duration: 1,
         ease: "expo.out",
@@ -210,81 +243,72 @@ window.addEventListener("DOMContentLoaded", (m) => {
       s.classList.toggle("is-active"), s.classList.contains("is-active") ? p.timeScale(1).play() : p.timeScale(2).reverse();
     });
   }
-  u();
+  l();
 });
 window.addEventListener("DOMContentLoaded", (m) => {
-  function u(t, o) {
+  function l(t, a) {
     const e = typeof t;
-    return typeof o != "string" || o.trim() === "" ? t : o === "true" && e === "boolean" ? !0 : o === "false" && e === "boolean" ? !1 : isNaN(o) && e === "string" ? o : !isNaN(o) && e === "number" ? +o : t;
+    return typeof a != "string" || a.trim() === "" ? t : a === "true" && e === "boolean" ? !0 : a === "false" && e === "boolean" ? !1 : isNaN(a) && e === "string" ? a : !isNaN(a) && e === "number" ? +a : t;
   }
-  const a = [], i = getComputedStyle(document.documentElement), r = document.querySelector("#color-themes"), s = /--([^:\s]+):\s*var\(--([^)]+)\);/g;
+  const o = [], i = getComputedStyle(document.documentElement), r = document.querySelector("#color-themes"), s = /--([^:\s]+):\s*var\(--([^)]+)\);/g;
   if (r) {
     const t = r.sheet.cssRules || r.sheet.rules;
     for (const g of t) {
       const p = {};
-      let y;
-      for (; (y = s.exec(g.cssText)) !== null; ) {
-        const h = "--" + y[1], f = i.getPropertyValue("--" + y[2]);
-        p[h] = f;
+      let h;
+      for (; (h = s.exec(g.cssText)) !== null; ) {
+        const y = "--" + h[1], f = i.getPropertyValue("--" + h[2]);
+        p[y] = f;
       }
-      a.push(p);
+      o.push(p);
     }
-    const o = u(0.4, r.getAttribute("speed")), e = u("power1.out", r.getAttribute("ease")), n = u(
+    const a = l(0.4, r.getAttribute("speed")), e = l("power1.out", r.getAttribute("ease")), n = l(
       50,
       r.getAttribute("percent-from-top")
-    ), l = u(0, r.getAttribute("min-width"));
-    gsap.registerPlugin(ScrollTrigger);
-    const d = document.querySelectorAll("[animate-body-to]");
-    d.forEach((g, p) => {
-      const y = +g.getAttribute("animate-body-to");
-      let h = `clamp(bottom ${n}%)`;
-      p === d.length - 1 && (h = `bottom ${n}%`), gsap.matchMedia().add(`(min-width: ${l}px)`, () => {
+    ), c = l(0, r.getAttribute("min-width")), u = document.querySelectorAll("[animate-body-to]");
+    u.forEach((g, p) => {
+      const h = +g.getAttribute("animate-body-to");
+      let y = `clamp(bottom ${n}%)`;
+      p === u.length - 1 && (y = `bottom ${n}%`), gsap.matchMedia().add(`(min-width: ${c}px)`, () => {
         gsap.timeline({
           scrollTrigger: {
             trigger: g,
             start: `clamp(top ${n}%)`,
-            end: h,
+            end: y,
             toggleActions: "play complete none reverse"
           }
         }).to("body", {
-          ...a[y - 1],
-          duration: o,
+          ...o[h - 1],
+          duration: a,
           ease: e
         });
       });
     });
-    const c = document.querySelectorAll("[set-body-to]");
-    c.forEach((g, p) => {
-      const y = +g.getAttribute("set-body-to");
-      let h = `clamp(bottom ${n}%)`;
-      p === c.length - 1 && (h = `bottom ${n}%`), gsap.matchMedia().add(`(min-width: ${l}px)`, () => {
+    const d = document.querySelectorAll("[set-body-to]");
+    d.forEach((g, p) => {
+      const h = +g.getAttribute("set-body-to");
+      d.length - 1, gsap.matchMedia().add(`(min-width: ${c}px)`, () => {
         gsap.timeline({
           scrollTrigger: {
             trigger: g,
-            start: "clamp(top 1%)",
-            end: h,
+            start: "top top",
+            end: "center top",
             toggleActions: "play complete none reverse"
           }
         }).to("body", {
-          ...a[y - 1],
+          ...o[h - 1],
           duration: 0
         });
       });
     });
   }
 });
-const q = Array.from(document.querySelectorAll("img[loading='lazy']"));
-q.forEach(function(m) {
-  m.addEventListener("load", function() {
-    ScrollTrigger.refresh();
-  });
-});
-function A() {
-  const m = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", u = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)", a = document.querySelector("[data-loader]");
-  if (a) {
-    const i = a.querySelector("[data-loader-bar]"), r = a.querySelector("[data-loader-percentage]"), s = a.querySelector("[data-loader-logo]"), t = a.querySelector("[data-loader-bg]");
-    let o = a.dataset.loaderDuration;
-    gsap.set(a, {
+function x() {
+  const m = "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", l = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)", o = document.querySelector("[data-loader]");
+  if (o) {
+    const i = o.querySelector("[data-loader-bar]"), r = o.querySelector("[data-loader-percentage]"), s = o.querySelector("[data-loader-logo]"), t = o.querySelector("[data-loader-bg]");
+    let a = o.dataset.loaderDuration;
+    gsap.set(o, {
       opacity: 1,
       display: "block"
     }), gsap.set(i, {
@@ -292,18 +316,18 @@ function A() {
     });
     const e = gsap.timeline({
       onComplete: () => {
-        gsap.set(a, { display: "none" });
+        gsap.set(o, { display: "none" });
       }
     });
     e.to(i, {
       width: "100%",
-      duration: o,
+      duration: a,
       // Use the dynamic duration
       ease: "power3.inOut"
     }).to(
       r,
       {
-        duration: o,
+        duration: a,
         // Use the dynamic duration
         ease: "power2.inOut",
         onUpdate: () => {
@@ -312,7 +336,7 @@ function A() {
         },
         onComplete: () => {
           e.to([r, s], {
-            y: 110,
+            y: 150,
             duration: 1,
             // This duration remains the same
             stagger: 0.1,
@@ -321,7 +345,7 @@ function A() {
             i,
             { clipPath: m },
             {
-              clipPath: u,
+              clipPath: l,
               duration: 1,
               ease: "power2.inOut"
             },
@@ -344,4 +368,4 @@ function A() {
     );
   }
 }
-A();
+x();

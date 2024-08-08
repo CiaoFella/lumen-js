@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       tl.from(image, {
         scale: scale,
-        force3D: true, // Forces 3D acceleration
+        force3D: true,
         ease: "none",
       });
     });
