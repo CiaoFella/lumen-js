@@ -18,14 +18,18 @@ window.addEventListener("DOMContentLoaded", () => {
     clickTl.set(faqAnswer, { height: 0 });
 
     clickTl
-      .to(faqAnswer, { height: "auto" })
+      .to(faqAnswer, { height: "auto", duration: 0.25, ease: "power2.inOut" })
       .to(icon, { rotate: 45 }, "<")
       .to(faqQuestion, { color: "white" }, "<")
       .to(faqQuestion, { padding: "0 16px" }, "<");
 
     hoverTl
       .to(faqQuestion, { color: "white" }, "<")
-      .to(faqQuestion, { padding: "0 16px", duration: 0.25 }, "<");
+      .to(
+        faqQuestion,
+        { padding: "0 16px", duration: 0.25, ase: "power2.inOut" },
+        "<"
+      );
 
     faqQuestion.addEventListener("click", () => {
       faqItem.classList.toggle("is-active");
