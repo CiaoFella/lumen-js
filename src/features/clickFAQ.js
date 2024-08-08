@@ -1,10 +1,10 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const faqItems = document.querySelectorAll("[data-faq=item]");
+  const faqItems = document.querySelectorAll(".faq_accordion");
 
   faqItems.forEach((faqItem) => {
-    const faqQuestion = faqItem.querySelector("[data-faq=question]");
-    const faqAnswer = faqItem.querySelector("[data-faq=answer]");
-    const icon = faqItem.querySelector("[data-faq=icon]");
+    const faqQuestion = faqItem.querySelector(".faq_question");
+    const faqAnswer = faqItem.querySelector(".faq_answer");
+    const icon = faqItem.querySelector(".faq_icon-wrapper");
 
     const clickTl = gsap.timeline({
       defaults: { duration: 0.25 },
