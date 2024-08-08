@@ -28,7 +28,12 @@ window.addEventListener("DOMContentLoaded", () => {
       .to(faqQuestion, { padding: "0 16px", duration: 0.25 }, "<");
 
     faqQuestion.addEventListener("click", () => {
-      clickTl.reversed() ? clickTl.play() : clickTl.reverse();
+      faqItem.classList.toggle("is-active");
+      if (faqItem.classList.contains("is-active")) {
+        clickTl.play();
+      } else {
+        clickTl.reverse();
+      }
     });
 
     faqQuestion.addEventListener("mouseenter", () => {
