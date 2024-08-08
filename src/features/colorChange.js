@@ -1,5 +1,4 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  gsap.registerPlugin(ScrollTrigger);
   // attribute value checker
   function attr(defaultVal, attrVal) {
     const defaultValType = typeof defaultVal;

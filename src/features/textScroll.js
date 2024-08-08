@@ -1,6 +1,4 @@
 window.addEventListener("DOMContentLoaded", (event) => {
-  gsap.registerPlugin(ScrollTrigger);
-
   const fullClipPath = "polygon(0% 0%, 100% 0%, 100% 115%, 0% 115%)";
   const topClipPath = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
 
@@ -81,6 +79,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         );
       });
     }
+
+    ScrollTrigger.refresh();
   });
 
   function unwrapSpanAndPreserveClasses(element) {
