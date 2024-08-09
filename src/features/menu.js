@@ -21,11 +21,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     menuTl
       .to(flyout, { display: "flex", duration: 0 })
       .from(bg, { height: "0vh", duration: 1, ease: "power4.inOut" }, 0)
-      .to(
-        menuTrigger,
-        { rotate: -45, duration: 0.5, ease: "power2.inOut" },
-        "<"
-      )
       .from(
         items,
         {
