@@ -21,6 +21,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     menuTl
       .to(flyout, { display: "flex", duration: 0 })
       .from(bg, { height: "0vh", duration: 1, ease: "power4.inOut" }, 0)
+      .call(() => navigation.classList.toggle("is-active"), [], "<")
       .from(
         items,
         {
@@ -43,7 +44,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         },
         "<-0.1"
       )
-      .call(() => navigation.classList.toggle("is-active"), [], "<")
       .from(divider, { width: 0, duration: 2, ease: "power4.inOut" }, "<+0.5")
       .fromTo(
         [ctaSplit.lines, generalElements],
