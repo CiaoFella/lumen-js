@@ -62,8 +62,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
         "<+0.25"
       );
 
-    menuTriggerTl.from(menuTriggerContent, {
-      yPercent: 100,
+    menuTriggerTl.to(menuTriggerContent, {
+      yPercent: -100,
       duration: 0.3,
       ease: "power2.out",
     });
