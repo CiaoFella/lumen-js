@@ -5,6 +5,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     const navigation = document.querySelector("[data-menu=wrapper]");
     const menuTrigger = navigation.querySelector("[data-menu=trigger]");
+    const menuTriggerContent = navigation.querySelector(
+      "[data-menu=trigger-content]"
+    );
     const flyout = navigation.querySelector("[data-menu=flyout]");
     const bg = flyout.querySelector("[data-menu=bg]");
     const items = flyout.querySelectorAll("[data-menu=item]");
@@ -18,6 +21,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     });
 
     const menuTl = gsap.timeline({ paused: true });
+    const menuTriggerTl = gsap.timeline({ paused: true });
     menuTl
       .to(flyout, { display: "flex", duration: 0 })
       .from(bg, { height: "0vh", duration: 1, ease: "power4.inOut" }, 0)
@@ -58,12 +62,20 @@ window.addEventListener("DOMContentLoaded", (event) => {
         "<+0.25"
       );
 
+    menuTriggerTl.from(menuTriggerContent, {
+      yPercent: 100,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+
     menuTrigger.addEventListener("click", () => {
       menuTrigger.classList.toggle("is-active");
       if (menuTrigger.classList.contains("is-active")) {
         menuTl.timeScale(1).play();
+        menuTriggerTl.play();
       } else {
         menuTl.timeScale(2).reverse();
+        menuTriggerTl.reverse();
       }
     });
   }
