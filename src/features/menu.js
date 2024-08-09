@@ -24,8 +24,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const menuTriggerTl = gsap.timeline({ paused: true });
     menuTl
       .to(flyout, { display: "flex", duration: 0 })
-      .from(bg, { height: "0vh", duration: 1, ease: "power4.inOut" }, 0)
       .call(() => navigation.classList.toggle("is-active"), [], "<")
+      .from(bg, { height: "0vh", duration: 1, ease: "power4.inOut" }, 0)
       .from(
         items,
         {
