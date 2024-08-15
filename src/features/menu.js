@@ -4,6 +4,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const topClipPath = "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)";
 
     const navigation = document.querySelector("[data-menu=wrapper]");
+    const navWrapper = document.querySelector(".nav-wrapper");
     const menuTrigger = navigation.querySelector("[data-menu=trigger]");
     const menuTriggerContent = navigation.querySelector(
       "[data-menu=trigger-content]"
@@ -73,9 +74,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
       if (menuTrigger.classList.contains("is-active")) {
         menuTl.timeScale(1).play();
         menuTriggerTl.play();
+        gsap.to(navWrapper, { color: "black", duration: 0.5 });
       } else {
         menuTl.timeScale(2).reverse();
         menuTriggerTl.reverse();
+        gsap.to(navWrapper, { color: "white", duration: 0.5 });
       }
     });
   }
