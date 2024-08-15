@@ -74,9 +74,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
       if (menuTrigger.classList.contains("is-active")) {
         menuTl.timeScale(1).play();
         menuTriggerTl.play();
+        navWrapper.classList.add("is-active");
       } else {
         menuTl.timeScale(2).reverse();
         menuTriggerTl.reverse();
+        navWrapper.classList.remove("is-active");
       }
     });
   }
