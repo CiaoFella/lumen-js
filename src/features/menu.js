@@ -74,11 +74,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
       if (menuTrigger.classList.contains("is-active")) {
         menuTl.timeScale(1).play();
         menuTriggerTl.play();
-        gsap.to(navWrapper, { color: "black", duration: 0.5 });
       } else {
         menuTl.timeScale(2).reverse();
         menuTriggerTl.reverse();
-        gsap.to(navWrapper, { color: "white", duration: 0.5 });
       }
     });
   }
